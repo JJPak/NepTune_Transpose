@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from termcolor import colored
 
 def transpose_Neptune_To_Excel (df, element, export_name):
     
