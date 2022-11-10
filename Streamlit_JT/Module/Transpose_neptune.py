@@ -67,13 +67,20 @@ def transpose_Neptune_To_Excel (df, element, export_name):
                             "180W/184W (1)", "182W/184W (2)", "183W/184W (3)", "186W/184W (4)", "180W/183W (5)", "182W/183W (6)",
                             "184W/183W (7)", "186W/183W (8)", "177Hf/184W (9)", "181Ta/184W (10)", "188Os/184W (11)", 
                             "177Hf/183W (12)", "181Ta/183W (13)", "188Os/183W (14)" ]
-    
+    elif element == 'Mo':
+        final_list_names = ["Sample", "Cycle", "Time", "91Zr", "92Mo", "94Mo", "95Mo", "96Mo", "97Mo", "98Mo", "99Ru", "100Mo"]
     else:
         return NotImplementedError
     # ------------------------------------------------------- add the different Elements
     
+    # ------------------------------------------------------- convert string to numbers
+    
     df_final = df_starter[final_list_names]
     
+    for i in final_list_names[3:]:
+        df_final[i] = df_final[i].astype(np.float64)
+    
+        
     # Transpose final df
     df_final = df_final.transpose()
     
